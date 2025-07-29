@@ -3,7 +3,7 @@
   "name": "Website Blocker",
   "version": "1.0.0",
   "description": "Block websites based on keywords in URL or page content",
-  
+
   "permissions": [
     "storage",
     "webRequest",
@@ -11,15 +11,15 @@
     "activeTab",
     "scripting"
   ],
-  
+
   "host_permissions": [
     "<all_urls>"
   ],
-  
+
   "background": {
     "service_worker": "background.js"
   },
-  
+
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
@@ -27,12 +27,12 @@
       "run_at": "document_start"
     }
   ],
-  
+
   "action": {
     "default_popup": "popup.html",
     "default_title": "Website Blocker"
   },
-  
+
   "web_accessible_resources": [
     {
       "resources": ["blocked.html"],
