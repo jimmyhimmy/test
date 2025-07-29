@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Blocked</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #333;
+        }
+
+        .blocked-container {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            padding: 48px 40px;
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .blocked-icon {
+            font-size: 64px;
+            margin-bottom: 24px;
+            display: block;
+        }
+
+        .blocked-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #dc3545;
+            margin: 0 0 16px 0;
+        }
+
+        .blocked-subtitle {
+            font-size: 16px;
+            color: #6c757d;
+            margin: 0 0 32px 0;
+            line-height: 1.5;
+        }
+
+        .blocked-details {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 24px 0;
+            text-align: left;
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+            gap: 16px;
+        }
+
+        .detail-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .detail-label {
+            font-weight: 600;
+            color: #495057;
+            min-width: 80px;
+            flex-shrink: 0;
+        }
+
+        .detail-value {
+            color: #6c757d;
+            word-break: break-all;
+            text-align: right;
+            font-family: monospace;
+            font-size: 13px;
+            background: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            border: 1px solid #dee2e6;
+        }
+
+        .keyword-highlight {
+            background: #fff3cd;
+            color: #856404;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        .actions {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 32px;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+        }
+
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #5a6fd8;
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #5a6268;
+            transform: translateY(-1px);
+        }
+
+        .help-text {
+            font-size: 12px;
+            color: #6c757d;
+            margin-top: 24px;
+            line-height: 1.4;
+        }
+
+        .help-text a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .help-text a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 480px) {
+            .blocked-container {
+                padding: 32px 24px;
+                margin: 20px;
+            }
+
+            .blocked-title {
+                font-size: 24px;
+            }
+
+            .blocked-icon {
+                font-size: 48px;
+            }
+
+            .actions {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .detail-row {
+                flex-direction: column;
+                gap: 4px;
+            }
+
+            .detail-value {
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="blocked-container">
+        <div class="blocked-icon">🚫</div>
+        <h1 class="blocked-title">Website Blocked</h1>
+        <p class="blocked-subtitle">
+            This website has been blocked because it contains content that matches your blocked keywords.
+        </p>
+
+        <div class="blocked-details">
+            <div class="detail-row">
+                <span class="detail-label">URL:</span>
+                <span class="detail-value" id="blockedUrl">Loading...</span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-label">Keyword:</span>
+                <span class="detail-value">
+                    <span class="keyword-highlight" id="matchedKeyword">Loading...</span>
+                </span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-label">Reason:</span>
+                <span class="detail-value" id="blockReason">Loading...</span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-label">Time:</span>
+                <span class="detail-value" id="blockTime">Loading...</span>
+            </div>
+        </div>
+
+        <div class="actions">
+            <button class="btn btn-primary" onclick="goBack()">
+                ← Go Back
+            </button>
+            <button class="btn btn-secondary" onclick="openSettings()">
+                ⚙️ Settings
+            </button>
+        </div>
+
+        <div class="help-text">
+            To unblock this website, remove the matching keyword from your blocked list in the extension settings.
+            <br>
+            Click the extension icon in your browser toolbar to manage your keywords.
+        </div>
+    </div>
+
+    <script src="blocked.js"></script>
+</body>
+</html>

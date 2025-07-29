@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Blocker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Website Blocker</h1>
+            <div class="toggle-container">
+                <label class="toggle-switch">
+                    <input type="checkbox" id="enableToggle" checked>
+                    <span class="slider"></span>
+                </label>
+                <span class="toggle-label">Enabled</span>
+            </div>
+        </div>
+
+        <div class="add-keyword-section">
+            <div class="input-group">
+                <input type="text" id="keywordInput" placeholder="Enter keyword to block..." maxlength="100">
+                <button id="addButton">Add</button>
+            </div>
+            <div class="help-text">
+                Keywords will block URLs and page content containing these terms
+            </div>
+        </div>
+
+        <div class="keywords-section">
+            <div class="section-header">
+                <h2>Blocked Keywords</h2>
+                <span id="keywordCount" class="count">0</span>
+            </div>
+            
+            <div id="keywordsList" class="keywords-list">
+                <div class="empty-state">
+                    <div class="empty-icon">🚫</div>
+                    <div class="empty-text">No keywords added yet</div>
+                    <div class="empty-subtext">Add keywords above to start blocking websites</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <button id="clearAllButton" class="clear-button" title="Clear all keywords">
+                Clear All
+            </button>
+            <div class="stats">
+                <span id="statusText">Ready</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>
