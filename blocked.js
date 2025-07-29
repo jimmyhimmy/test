@@ -119,11 +119,27 @@ function setupUrlCopy() {
     });
 }
 
+// Setup button event listeners
+function setupButtonEvents() {
+    // Go Back button
+    const backBtn = document.getElementById('back-btn');
+    if (backBtn) {
+        backBtn.addEventListener('click', goBack);
+    }
+    
+    // Settings button
+    const settingsBtn = document.getElementById('settings-btn');
+    if (settingsBtn) {
+        settingsBtn.addEventListener('click', openSettings);
+    }
+}
+
 // Initialize everything when page loads
 document.addEventListener('DOMContentLoaded', () => {
     initializeBlockedPage();
     setupKeyboardShortcuts();
     setupUrlCopy();
+    setupButtonEvents();
 });
 
 // Handle browser back/forward buttons

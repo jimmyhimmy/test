@@ -29,3 +29,34 @@ AFTER (fixed):
 RESULT: Your extension should now load without any errors. The browser will use a default icon instead of custom ones, which is perfectly fine for functionality.
 
 STATUS: ✅ FIXED and ready to install!
+
+Q2: Fix Content Security Policy Violation - Inline Event Handlers
+
+A2: ✅ FIXED! I removed all inline event handlers from blocked.html and updated blocked.js to use proper event listeners.
+
+PROBLEM: CSP was blocking inline onclick handlers on lines 235 and 238:
+- onclick="goBack()" 
+- onclick="openSettings()"
+
+SOLUTION: 
+1. Removed inline onclick attributes from both buttons
+2. Added unique IDs to the buttons:
+   - id="back-btn" for the Go Back button  
+   - id="settings-btn" for the Settings button
+3. Created setupButtonEvents() function in blocked.js
+4. Added event listeners using addEventListener()
+5. Called setupButtonEvents() in DOMContentLoaded
+
+BEFORE (CSP violation):
+<button class="btn btn-primary" onclick="goBack()">← Go Back</button>
+<button class="btn btn-secondary" onclick="openSettings()">⚙️ Settings</button>
+
+AFTER (CSP compliant):
+<button id="back-btn" class="btn btn-primary">← Go Back</button>
+<button id="settings-btn" class="btn btn-secondary">⚙️ Settings</button>
+
+JavaScript now uses:
+document.getElementById('back-btn').addEventListener('click', goBack);
+document.getElementById('settings-btn').addEventListener('click', openSettings);
+
+RESULT: All functionality preserved, CSP violations eliminated!

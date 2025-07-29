@@ -13,3 +13,4 @@ Website Blocker Extension - Change Log
 2024-07-29 04:20 - Created log.txt file to track all project changes with timestamps
 2024-07-29 04:21 - Created Q&A.txt file to answer user questions about the extension project
 2024-07-29 04:22 - Updated manifest.json formatting per user request (spacing changes only)
+2024-07-29 04:23 - Fixed CSP violations by removing inline event handlers from blocked.html and updating blocked.js
