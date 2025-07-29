@@ -1,0 +1,12 @@
+Website Blocker Extension - Change Log
+
+2024-07-29 04:03 - Created manifest.json with extension configuration and permissions for Manifest V3
+2024-07-29 04:04 - Created background.js with web request interception and keyword-based blocking logic
+2024-07-29 04:04 - Created content.js for real-time page content scanning against blocked keywords
+2024-07-29 04:04 - Created popup.html with modern UI for keyword management and extension controls
+2024-07-29 04:05 - Created popup.js with full functionality for keyword storage and management
+2024-07-29 04:05 - Created style.css with beautiful modern styling and responsive design
+2024-07-29 04:06 - Created blocked.html with attractive blocked page display and user information
+2024-07-29 04:07 - Created blocked.js with blocked page functionality and keyboard shortcuts
+2024-07-29 04:07 - Created comprehensive README.md with complete installation and usage guide for non-coders
+2024-07-29 04:18 - Fixed manifest.json by removing icon references to resolve "Could not load icon" errors
