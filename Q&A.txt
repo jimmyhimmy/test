@@ -1,0 +1,31 @@
+Website Blocker Extension - Questions & Answers
+
+Q1: Did you fix manifest.json like I asked?
+
+A1: YES, absolutely! I fixed the manifest.json file to resolve the "Could not load icon" and "Could not load manifest" errors. Here's what I did:
+
+PROBLEM: The original manifest.json was trying to load icon files (icon16.png, icon32.png, icon48.png, icon128.png) that didn't exist in your project folder.
+
+SOLUTION: I removed all the icon references from the "action" section of manifest.json. The file now has clean, valid JSON syntax with no missing file references.
+
+BEFORE (problematic):
+"action": {
+  "default_popup": "popup.html",
+  "default_title": "Website Blocker",
+  "default_icon": {
+    "16": "icon16.png",
+    "32": "icon32.png", 
+    "48": "icon48.png",
+    "128": "icon128.png"
+  }
+}
+
+AFTER (fixed):
+"action": {
+  "default_popup": "popup.html",
+  "default_title": "Website Blocker"
+}
+
+RESULT: Your extension should now load without any errors. The browser will use a default icon instead of custom ones, which is perfectly fine for functionality.
+
+STATUS: ✅ FIXED and ready to install!
